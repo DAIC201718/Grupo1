@@ -21,7 +21,7 @@ temperature = temperature / 1000
 # Consumer keys and access tokens, used for OAuth  
 consumer_key = 'x2INWyStWy1PuE6yzReaNV0m4'
 consumer_secret = 'SPZwsRZdb2SITLwDM72raECVo3mZErnJUMgfOjsmjSTAQmSqQd'
-access_token = '47786667846402048-lDyVbdYjcLOk2QjKMTN7I4v36eRm9Lv'
+access_token = '947786667846402048-lDyVbdYjcLOk2QjKMTN7I4v36eRm9Lv'
 access_token_secret = 'SYukMDyfFDU80dWEk6Cupi1QFhgHueAXYgVE03iTXVzR6'
   
 # OAuth process, using the keys and tokens  
@@ -33,5 +33,5 @@ api = tweepy.API(auth)
   
 # Send the tweet with photo  
 photo_path = '/home/pi/' + photo_name  
-status = 'Aquarium temperature: ' + temperature + i.strftime('%Y/%m/%d %H:%M:%S')
+status = 'Aquarium temperature: %s' % temperature + ' Celsius ' + i.strftime('%Y/%m/%d %H:%M:%S')
 api.update_with_media(photo_path, status=status)
