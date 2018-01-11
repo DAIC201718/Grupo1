@@ -32,6 +32,10 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)  
   
 # Send the tweet with photo  
-photo_path = '/home/pi/Desktop/proyectoG1/' + photo_name
+photo_path = '/home/pi/' + photo_name
 status = 'Aquarium temperature: %s' % temperature + ' Celsius ' + i.strftime('%Y/%m/%d %H:%M:%S')
 api.update_with_media(photo_path, status=status)
+
+#delete jpgs
+borrar = 'rm /home/pi/*.jpg
+call(['borrar'], shell = True)
