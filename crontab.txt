@@ -1,0 +1,3 @@
+00 */2 * * * root python /home/pi/Desktop/proyectoG1/tweet.py
+
+@reboot root python /home/pi/Desktop/proyectoG1/proyectoIoT.py
