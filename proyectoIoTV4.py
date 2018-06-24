@@ -9,7 +9,6 @@ BombaAgua = 13
 SensorNivelPrincipal = 12 #sensor acuario principal
 temperature = 0
 LuzLED = 0
-bomba = 0
 
 def setup():
         GPIO.setmode(GPIO.BOARD)      # Numbers GPIOs by physical location
@@ -25,6 +24,7 @@ def swLed():
                         GPIO.output(BombaAgua, True)
                         GPIO.output(Led, True)
                         bomba =  0
+                        print ('Bomba apagada')
                         LuzLED = 0
 			time.sleep(1)
     else:
@@ -32,11 +32,14 @@ def swLed():
         	            GPIO.output(BombaAgua, False)
 			    GPIO.output(Led, False)
                             bomba = 1
+                            print ('Bomba encendida')
 			    time.sleep(1)
                             GPIO.output(Led, True)
                             time.sleep(1)
                             LuzLED = 1
 
+
+//obtenemos la temperatura como hacemos en tweet.py
 def temperatura():
         tempfile = open("/sys/bus/w1/devices/28-0416b116e1ff/w1_slave")
         thetext = tempfile.read() 
@@ -44,7 +47,7 @@ def temperatura():
         tempdata = thetext.split("\n")[1].split(" ")[9]
         temperature = float(tempdata[2:])
         temperature = temperature / 1000
-        # print ('Temperatura: %s' % temperature)
+        print ('Temperatura: %s' % temperature)
         return temperature
 
 def uploadData():
@@ -88,7 +91,7 @@ if __name__ == '__main__':     # Program start from here
             while 1:
                 swLed()
                 temperatura()
-                uploadData()
+        #uploadData()
         except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
                 destroy()
 
